@@ -1,0 +1,23 @@
+
+{
+    "companies": [
+        {
+            "name": "Apple Inc.",
+            "ticker": "AAPL",
+            "cik": "0000320193",
+            "keywords": ["iPhone", "iPad", "Mac", "Services", "Wearables"]
+        },
+        {
+            "name": "Microsoft Corporation",
+            "ticker": "MSFT",
+            "cik": "0000789019",
+            "keywords": ["Windows", "Azure", "Office", "Cloud", "Xbox"]
+        },
+        {
+            "name": "Amazon.com Inc.",
+            "ticker": "AMZN",
+            "cik": "0001018724",
+            "keywords": ["AWS", "Prime", "E-commerce", "Alexa", "Logistics"]
+        }
+    ]
+}

@@ -1,0 +1,60 @@
+{
+  "company": "Microsoft Corporation",
+  "ticker": "MSFT",
+  "articles_count": 3,
+  "sentiment_distribution": {
+    "positive": 3,
+    "negative": 0,
+    "neutral": 0
+  },
+  "articles": [
+    {
+      "title": "Microsoft Corporation CEO Discusses Future Strategy",
+      "excerpt": "In a recent interview, the CEO outlined the company's vision for growth in the coming years, focusing on Xbox.",
+      "date": "2025-08-30",
+      "link": "https://example.com/news/msft-ceo-20",
+      "source": "mock_data",
+      "sentiment": {
+        "scores": {
+          "neg": 0.0,
+          "neu": 0.827,
+          "pos": 0.173,
+          "compound": 0.5574
+        },
+        "sentiment": "positive"
+      }
+    },
+    {
+      "title": "Microsoft Corporation Announces New Office Product",
+      "excerpt": "The company unveiled its latest innovation in the Windows market, expected to drive future growth.",
+      "date": "2025-08-27",
+      "link": "https://example.com/news/msft-product-23",
+      "source": "mock_data",
+      "sentiment": {
+        "scores": {
+          "neg": 0.0,
+          "neu": 0.785,
+          "pos": 0.215,
+          "compound": 0.6369
+        },
+        "sentiment": "positive"
+      }
+    },
+    {
+      "title": "Microsoft Corporation Announces New Office Product",
+      "excerpt": "The company unveiled its latest innovation in the Windows market, expected to drive future growth.",
+      "date": "2025-09-12",
+      "link": "https://example.com/news/msft-product-7",
+      "source": "mock_data",
+      "sentiment": {
+        "scores": {
+          "neg": 0.0,
+          "neu": 0.785,
+          "pos": 0.215,
+          "compound": 0.6369
+        },
+        "sentiment": "positive"
+      }
+    }
+  ]
+}

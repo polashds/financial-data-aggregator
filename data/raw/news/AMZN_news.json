@@ -1,0 +1,27 @@
+{
+  "company": "Amazon.com Inc.",
+  "ticker": "AMZN",
+  "articles": [
+    {
+      "title": "Amazon.com Inc. CEO Discusses Future Strategy",
+      "excerpt": "In a recent interview, the CEO outlined the company's vision for growth in the coming years, focusing on AWS.",
+      "date": "2025-09-12",
+      "link": "https://example.com/news/amzn-ceo-7",
+      "source": "mock_data"
+    },
+    {
+      "title": "Amazon.com Inc. CEO Discusses Future Strategy",
+      "excerpt": "In a recent interview, the CEO outlined the company's vision for growth in the coming years, focusing on AWS.",
+      "date": "2025-09-12",
+      "link": "https://example.com/news/amzn-ceo-7",
+      "source": "mock_data"
+    },
+    {
+      "title": "Amazon.com Inc. CEO Discusses Future Strategy",
+      "excerpt": "In a recent interview, the CEO outlined the company's vision for growth in the coming years, focusing on AWS.",
+      "date": "2025-09-02",
+      "link": "https://example.com/news/amzn-ceo-17",
+      "source": "mock_data"
+    }
+  ]
+}

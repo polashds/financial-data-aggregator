@@ -1,0 +1,31 @@
+requests #==2.28.1
+beautifulsoup4 #==4.11.1
+scrapy #==2.7.1
+nltk #==3.7
+pandas #==1.5.0
+python-dotenv #==0.19.2
+sec-edgar-downloader #==4.0.2
+feedparser #==6.0.10
+
+
+# Web framework
+flask #==2.2.2
+fastapi #==0.88.0
+uvicorn #==0.20.0
+
+# Database
+#sqlite3
+
+# Scheduling
+apscheduler #==3.9.1
+
+# Data analysis
+pandas #==1.5.0
+numpy #==1.23.4
+
+# RSS feeds
+feedparser #==6.0.10
+
+# Authentication
+python-jose #==3.3.0
+passlib #==1.7.4

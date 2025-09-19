@@ -1,0 +1,21 @@
+{
+  "timestamp": "2025-09-19T19:17:40.043879",
+  "summary": {
+    "sec_filings": {
+      "total_companies": 3,
+      "successful_downloads": 3
+    },
+    "news": {
+      "total_companies": 3,
+      "total_articles": 9
+    },
+    "sentiment": {
+      "total_articles": 9,
+      "positive_articles": 9,
+      "negative_articles": 0,
+      "neutral_articles": 0,
+      "positive_percentage": 100.0,
+      "negative_percentage": 0.0
+    }
+  }
+}

@@ -1,0 +1,27 @@
+{
+  "company": "Microsoft Corporation",
+  "ticker": "MSFT",
+  "articles": [
+    {
+      "title": "Microsoft Corporation CEO Discusses Future Strategy",
+      "excerpt": "In a recent interview, the CEO outlined the company's vision for growth in the coming years, focusing on Xbox.",
+      "date": "2025-08-30",
+      "link": "https://example.com/news/msft-ceo-20",
+      "source": "mock_data"
+    },
+    {
+      "title": "Microsoft Corporation Announces New Office Product",
+      "excerpt": "The company unveiled its latest innovation in the Windows market, expected to drive future growth.",
+      "date": "2025-08-27",
+      "link": "https://example.com/news/msft-product-23",
+      "source": "mock_data"
+    },
+    {
+      "title": "Microsoft Corporation Announces New Office Product",
+      "excerpt": "The company unveiled its latest innovation in the Windows market, expected to drive future growth.",
+      "date": "2025-09-12",
+      "link": "https://example.com/news/msft-product-7",
+      "source": "mock_data"
+    }
+  ]
+}

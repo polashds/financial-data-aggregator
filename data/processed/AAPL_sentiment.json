@@ -1,0 +1,60 @@
+{
+  "company": "Apple Inc.",
+  "ticker": "AAPL",
+  "articles_count": 3,
+  "sentiment_distribution": {
+    "positive": 3,
+    "negative": 0,
+    "neutral": 0
+  },
+  "articles": [
+    {
+      "title": "Apple Inc. Reports Strong Q4 Earnings, Beats Estimates",
+      "excerpt": "Apple Inc. announced quarterly revenue of $77B, exceeding analyst expectations by 3%.",
+      "date": "2025-08-30",
+      "link": "https://example.com/news/aapl-earnings-20",
+      "source": "mock_data",
+      "sentiment": {
+        "scores": {
+          "neg": 0.0,
+          "neu": 0.852,
+          "pos": 0.148,
+          "compound": 0.5106
+        },
+        "sentiment": "positive"
+      }
+    },
+    {
+      "title": "Apple Inc. Reports Strong Q4 Earnings, Beats Estimates",
+      "excerpt": "Apple Inc. announced quarterly revenue of $77B, exceeding analyst expectations by 3%.",
+      "date": "2025-09-09",
+      "link": "https://example.com/news/aapl-earnings-10",
+      "source": "mock_data",
+      "sentiment": {
+        "scores": {
+          "neg": 0.0,
+          "neu": 0.852,
+          "pos": 0.148,
+          "compound": 0.5106
+        },
+        "sentiment": "positive"
+      }
+    },
+    {
+      "title": "Apple Inc. Expands iPhone Operations",
+      "excerpt": "The company announced expansion plans in key markets, strengthening its position in the iPhone industry.",
+      "date": "2025-08-26",
+      "link": "https://example.com/news/aapl-expansion-24",
+      "source": "mock_data",
+      "sentiment": {
+        "scores": {
+          "neg": 0.0,
+          "neu": 0.796,
+          "pos": 0.204,
+          "compound": 0.5574
+        },
+        "sentiment": "positive"
+      }
+    }
+  ]
+}

@@ -1,0 +1,60 @@
+{
+  "company": "Amazon.com Inc.",
+  "ticker": "AMZN",
+  "articles_count": 3,
+  "sentiment_distribution": {
+    "positive": 3,
+    "negative": 0,
+    "neutral": 0
+  },
+  "articles": [
+    {
+      "title": "Amazon.com Inc. CEO Discusses Future Strategy",
+      "excerpt": "In a recent interview, the CEO outlined the company's vision for growth in the coming years, focusing on AWS.",
+      "date": "2025-09-12",
+      "link": "https://example.com/news/amzn-ceo-7",
+      "source": "mock_data",
+      "sentiment": {
+        "scores": {
+          "neg": 0.0,
+          "neu": 0.827,
+          "pos": 0.173,
+          "compound": 0.5574
+        },
+        "sentiment": "positive"
+      }
+    },
+    {
+      "title": "Amazon.com Inc. CEO Discusses Future Strategy",
+      "excerpt": "In a recent interview, the CEO outlined the company's vision for growth in the coming years, focusing on AWS.",
+      "date": "2025-09-12",
+      "link": "https://example.com/news/amzn-ceo-7",
+      "source": "mock_data",
+      "sentiment": {
+        "scores": {
+          "neg": 0.0,
+          "neu": 0.827,
+          "pos": 0.173,
+          "compound": 0.5574
+        },
+        "sentiment": "positive"
+      }
+    },
+    {
+      "title": "Amazon.com Inc. CEO Discusses Future Strategy",
+      "excerpt": "In a recent interview, the CEO outlined the company's vision for growth in the coming years, focusing on AWS.",
+      "date": "2025-09-02",
+      "link": "https://example.com/news/amzn-ceo-17",
+      "source": "mock_data",
+      "sentiment": {
+        "scores": {
+          "neg": 0.0,
+          "neu": 0.827,
+          "pos": 0.173,
+          "compound": 0.5574
+        },
+        "sentiment": "positive"
+      }
+    }
+  ]
+}

@@ -1,0 +1,220 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Financial Data Aggregator</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 0; padding: 20px; }
+        .container { max-width: 1200px; margin: 0 auto; }
+        .header { text-align: center; margin-bottom: 30px; }
+        .dashboard { display: grid; grid-template-columns: 1fr 2fr; gap: 20px; }
+        .company-list { border-right: 1px solid #ddd; padding-right: 20px; }
+        .company-item { padding: 10px; cursor: pointer; border-bottom: 1px solid #eee; }
+        .company-item:hover { background-color: #f5f5f5; }
+        .company-item.active { background-color: #e3f2fd; font-weight: bold; }
+        .content-area { padding: 20px; }
+        .tab { overflow: hidden; border: 1px solid #ccc; background-color: #f1f1f1; }
+        .tab button { background-color: inherit; float: left; border: none; outline: none; 
+                     cursor: pointer; padding: 14px 16px; transition: 0.3s; }
+        .tab button:hover { background-color: #ddd; }
+        .tab button.active { background-color: #ccc; }
+        .tabcontent { display: none; padding: 20px; border: 1px solid #ccc; border-top: none; }
+        .news-item { margin-bottom: 15px; padding: 10px; border-left: 4px solid #ddd; }
+        .positive { border-left-color: #4caf50; }
+        .negative { border-left-color: #f44336; }
+        .neutral { border-left-color: #9e9e9e; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Financial Data Aggregator</h1>
+            <p>Track news sentiment and SEC filings for your portfolio</p>
+        </div>
+        
+        <div class="dashboard">
+            <div class="company-list" id="companyList">
+                <h3>Companies</h3>
+                <div id="companies"></div>
+            </div>
+            
+            <div class="content-area">
+                <div class="tab">
+                    <button class="tablinks active" onclick="openTab(event, 'Sentiment')">Sentiment Analysis</button>
+                    <button class="tablinks" onclick="openTab(event, 'News')">Latest News</button>
+                    <button class="tablinks" onclick="openTab(event, 'Filings')">SEC Filings</button>
+                </div>
+                
+                <div id="Sentiment" class="tabcontent" style="display:block;">
+                    <h3>Sentiment Analysis</h3>
+                    <canvas id="sentimentChart" width="400" height="200"></canvas>
+                </div>
+                
+                <div id="News" class="tabcontent">
+                    <h3>Latest News</h3>
+                    <div id="newsItems"></div>
+                </div>
+                
+                <div id="Filings" class="tabcontent">
+                    <h3>SEC Filings</h3>
+                    <table id="filingsTable">
+                        <thead>
+                            <tr>
+                                <th>Type</th>
+                                <th>Date</th>
+                                <th>Size</th>
+                            </tr>
+                        </thead>
+                        <tbody></tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let currentCompanyId = null;
+        let sentimentChart = null;
+        
+        // Load companies
+        fetch('/api/companies')
+            .then(response => response.json())
+            .then(companies => {
+                const container = document.getElementById('companies');
+                companies.forEach(company => {
+                    const div = document.createElement('div');
+                    div.className = 'company-item';
+                    div.textContent = `${company.name} (${company.ticker})`;
+                    div.onclick = () => selectCompany(company.id);
+                    container.appendChild(div);
+                });
+                
+                if (companies.length > 0) {
+                    selectCompany(companies[0].id);
+                }
+            });
+        
+        function selectCompany(companyId) {
+            currentCompanyId = companyId;
+            
+            // Update UI
+            document.querySelectorAll('.company-item').forEach(item => {
+                item.classList.remove('active');
+            });
+            event.target.classList.add('active');
+            
+            // Load data
+            loadSentimentData();
+            loadNewsData();
+            loadFilingsData();
+        }
+        
+        function loadSentimentData() {
+            fetch(`/api/sentiment/${currentCompanyId}?days=30`)
+                .then(response => response.json())
+                .then(data => {
+                    if (sentimentChart) {
+                        sentimentChart.destroy();
+                    }
+                    
+                    const ctx = document.getElementById('sentimentChart').getContext('2d');
+                    sentimentChart = new Chart(ctx, {
+                        type: 'line',
+                        data: {
+                            labels: data.map(item => item.date),
+                            datasets: [
+                                {
+                                    label: 'Positive',
+                                    data: data.map(item => item.positive),
+                                    borderColor: '#4caf50',
+                                    backgroundColor: 'rgba(76, 175, 80, 0.1)',
+                                    fill: true
+                                },
+                                {
+                                    label: 'Negative',
+                                    data: data.map(item => item.negative),
+                                    borderColor: '#f44336',
+                                    backgroundColor: 'rgba(244, 67, 54, 0.1)',
+                                    fill: true
+                                },
+                                {
+                                    label: 'Neutral',
+                                    data: data.map(item => item.neutral),
+                                    borderColor: '#9e9e9e',
+                                    backgroundColor: 'rgba(158, 158, 158, 0.1)',
+                                    fill: true
+                                }
+                            ]
+                        },
+                        options: {
+                            responsive: true,
+                            plugins: {
+                                title: {
+                                    display: true,
+                                    text: 'News Sentiment Over Time'
+                                }
+                            }
+                        }
+                    });
+                });
+        }
+        
+        function loadNewsData() {
+            fetch(`/api/news/${currentCompanyId}?limit=10`)
+                .then(response => response.json())
+                .then(articles => {
+                    const container = document.getElementById('newsItems');
+                    container.innerHTML = '';
+                    
+                    articles.forEach(article => {
+                        const div = document.createElement('div');
+                        div.className = `news-item ${article.sentiment || 'neutral'}`;
+                        div.innerHTML = `
+                            <h4><a href="${article.url}" target="_blank">${article.title}</a></h4>
+                            <p>${article.excerpt}</p>
+                            <small>${article.source} - ${article.date}</small>
+                        `;
+                        container.appendChild(div);
+                    });
+                });
+        }
+        
+        function loadFilingsData() {
+            fetch(`/api/filings/${currentCompanyId}`)
+                .then(response => response.json())
+                .then(filings => {
+                    const tbody = document.querySelector('#filingsTable tbody');
+                    tbody.innerHTML = '';
+                    
+                    filings.forEach(filing => {
+                        const row = document.createElement('tr');
+                        row.innerHTML = `
+                            <td>${filing.type}</td>
+                            <td>${filing.date}</td>
+                            <td>${Math.round(filing.content_length / 1024)} KB</td>
+                        `;
+                        tbody.appendChild(row);
+                    });
+                });
+        }
+        
+        function openTab(evt, tabName) {
+            const tabcontent = document.getElementsByClassName("tabcontent");
+            for (let i = 0; i < tabcontent.length; i++) {
+                tabcontent[i].style.display = "none";
+            }
+            
+            const tablinks = document.getElementsByClassName("tablinks");
+            for (let i = 0; i < tablinks.length; i++) {
+                tablinks[i].className = tablinks[i].className.replace(" active", "");
+            }
+            
+            document.getElementById(tabName).style.display = "block";
+            evt.currentTarget.className += " active";
+        }
+    </script>
+</body>
+</html>
